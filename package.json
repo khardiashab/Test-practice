@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "app.js",
+    "start": "node app.js",
     "dev": "npx nodemon app.js"
   },
   "nodemonConfig": {
