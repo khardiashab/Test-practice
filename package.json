@@ -1,0 +1,30 @@
+{
+  "name": "paper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "app.js",
+    "dev": "npx nodemon app.js"
+  },
+  "nodemonConfig": {
+    "ext": "ejs css js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.3",
+    "fs-extra": "^11.0.0",
+    "googleapis": "^109.0.1",
+    "mongoose": "^6.7.3",
+    "multer": "^1.4.5-lts.1",
+    "passport": "^0.6.0",
+    "sharp": "^0.31.2"
+  }
+}

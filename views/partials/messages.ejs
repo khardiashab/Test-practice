@@ -1,0 +1,18 @@
+<% if( typeof error_msg  != 'undefined' && error_msg.length > 0 ) { %> 
+<div class="alert alert-danger alert-dismissible fade show px-2 py-1" role="alert">
+  <%= error_msg %> 
+</div>
+<% } %> 
+<% if( typeof success_msg  != 'undefined' && success_msg.length > 0 ) { %> 
+<div class="alert alert-success alert-dismissible fade show px-2 py-1" role="alert">
+  <%= success_msg %> 
+</div>
+<% } %> 
+<% if( typeof errors != 'undefined' && errors.length > 0) { %> 
+  <% errors.forEach( error =>{ %> 
+    <div class="alert alert-danger alert-dismissible fade show px-2 py-1" role="alert">
+      <%= error %> 
+      
+    </div>
+  <%}) %> 
+<%  }%> 
