@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "npx nodemon app.js"
+
+    "test": "npx nodemon app.js",
+    "dev": "npm start"
   },
   "nodemonConfig": {
     "ext": "ejs css js"
