@@ -1,6 +1,5 @@
 const sharp = require("sharp")
 const path = require("path")
-const { options } = require("../routes/admin-routes")
 
 const filePath = path.join(__dirname, "../public/uploads/upload.jpg")
 const compressPath = path.join(__dirname, "../public/compressed/", 'comp-file.jpg')
