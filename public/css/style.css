@@ -9,19 +9,18 @@ body{
   background-color: rgb(243,243,243);
   display: flex;
   min-height: 100vh!important;
-
+  box-sizing: border-box;
   flex-direction: column;
 }
+
 .container{
   min-height: 100vh!important;
-  padding-bottom: 200px!important;
-  /* border: 2px solid red; */
+  padding-bottom: 70px!important;
 }
 .admin-login{
   background-color: rgb(243,243,243);
-  min-height: 100vh!important;
+  margin-top: 100px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   text-align: center;
 }
@@ -30,14 +29,15 @@ body{
 }
 
 .login-container{
-  width: 400px;
-  border: 2px solid var(--border-login-color);
+  width: 100%;
+  max-width: 400px;
   border-radius: 8px;
-  box-shadow: 0 5px 6px rgba(0, 0, 0, .25);
+  box-shadow: 0 8px 6px rgba(0, 0, 0, .25);
   background-color: white;
 }
-@media screen and( max-width : 500px){
-  .login-containe{
+
+@media screen and( max-width : 500px ){
+  .login-container{
     width: 100%;
   }
   .questino-img{
@@ -45,25 +45,73 @@ body{
   }
 }
 
-.questino-img > img{
+.question-img > img{
   width: 100%;
   object-fit: cover;
 }
+
 .question-container{
   width: 100%;
   max-width: 400px;
-  /* border: 2px solid; */
 }
 
 .navbar{
   background-color: rgba(0, 0, 0, 0.794);
   padding: 20px 0 !important;
 }
+
 .navbar .nav-link{
   color : grey;
   font-size: large;
   font-weight: 400;
 }
 
+.question-number{
+  width: 50px;
+  line-height: 50px;
+  background-color: ghostwhite;
+  border-radius: 50%;
+}
 
+.container{
+  overflow: hidden;
+}
 
+.option{
+  background-color:  rgba(220, 220, 220, 0.274);
+}
+
+.option:active{
+  transform: scaleY(.85);
+  color: rgba(220, 220, 220);
+}
+
+.option__clicked{
+  background-color: rgb(54, 110, 97);
+  color : rgb(255, 255, 255);
+  transform: scaleY(1.1);
+  z-index: 10;
+}
+
+.question__container{
+ display: none;
+}
+
+.fixed-bottom{
+  z-index: 1000!important;
+}
+
+#panel{
+  background-color:rgba(19, 18, 18, 0.274) ;
+  height: 100vh ;
+}
+
+.question__right{
+  border:  2px solid green;
+  background-color: rgba(0, 128, 0, .3);
+}
+
+.question__wrong{
+  border:  2px solid red;
+  background-color: rgb(255, 0, 0, .1);
+}

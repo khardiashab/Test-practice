@@ -96,7 +96,7 @@ async function deleteFile(fileId) {
       fileId : fileId,
 
     })
-    console.log(response.data, response.status)
+    // console.log(response.data, response.status)
     return (response.status)
   } catch (error) {
     console.log(error.message)

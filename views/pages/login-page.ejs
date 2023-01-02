@@ -1,0 +1,15 @@
+<div class="admin-login px-2">
+    <div class="login-container py-5 px-2 px-md-5">
+      <p class="lead fw-bold mb-3">Login here</p>
+      <%- include("../partials/messages.ejs") %>
+        <form action="/login" method="post">
+  
+          <input type="text" class="form-control my-3" name="mobile" placeholder="Mobile Number"
+            value="<%=typeof mobile != 'undefined' ? mobile : '' %>">
+          <input type="password" class="form-control my-3" name="password" placeholder="password" value="">
+  
+          <input type="submit" class="btn btn-primary form-control mb-5" value="Login">
+          <a href="/" style="text-align:right;">Forgot Password?</a>
+        </form>
+    </div>
+</div>

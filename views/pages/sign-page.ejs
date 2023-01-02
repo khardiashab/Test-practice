@@ -1,0 +1,14 @@
+<div class="admin-login px-2">
+    <div class="login-container py-5 px-2 px-md-5">
+      <p class="lead fw-bold mb-3 text-center">Weclcome to User Sign In</p>
+      <%- include("../partials/messages.ejs") %> 
+      <form action="/sign-in" method="post">
+        <input type="text" class="form-control my-3" name="name" placeholder="Name" value="<%=typeof name != 'undefined' ? name : '' %>">
+        <input type="number" class="form-control my-3" name="mobile" placeholder="Mobile Number" value="<%=typeof mobile != 'undefined' ? mobile : '' %>">
+        <input type="password" class="form-control my-3" name="Password" placeholder="password" value="">
+        <input type="password" class="form-control my-3" name="confrimPassword" placeholder="confrim password" value="">
+        <input type="submit" class="btn btn-primary form-control mb-5" value="sign-in">
+        <a href="/login">Are you already a user?</a>
+      </form>
+    </div>
+</div>

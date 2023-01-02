@@ -1,0 +1,29 @@
+<div class="home-page-container d-flex flex-column justify-content-center mx-1">
+  <div class="d-flex  border-bottom shadow mb-5 py-4 fs-3 px-2"><span>Welcome <%= typeof name==='undefined' ? 'User'
+        :name %> !</span>
+  </div>
+
+  <div class="row justify-content-md-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <a href="/user/practice" class="btn btn-outline-dark mb-3 mx-5">Practice</a>
+      <div class="p-1">
+        <p class="lead fw-bold">Your Tests</p>
+        <hr>
+        <% if(typeof tests !=="undefined" ) { %>
+          <div class="row row-cols-2 g-1 g-md-2">
+            <% for( let test of tests) { %>
+              <a href="/user/test/<%= test._id %>" class="btn btn-outline-dark mb-3">
+                <%= test.name %>
+              </a>
+              <% } %>
+          </div>
+          <% } else {%>
+            <p class="lead bg-warning p-2">Test is not available.</p>
+            <% } %>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<%- include("../partials/footer") %>

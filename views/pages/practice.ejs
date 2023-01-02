@@ -1,0 +1,99 @@
+<div class="practice-container mx-1">
+  <div class="my-3 mb-5 fw-bold">
+     <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/user/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Practice</li>
+    </ol>
+  </nav>
+  </div>
+
+  <div class="questions-table px-2">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Subject</th>
+          <th scope="col">Questions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%  %> 
+        <tr>
+          <th scope="row">1</th>
+          <td>Unanswered</td>
+          <td><%=  %> 50</td>
+        </tr>
+        <tr>
+          <th scope="row">1</th>
+          <td>Hindi</td>
+          <td><%=  %> 50</td>
+        </tr>
+        <tr>
+          <th scope="row">1</th>
+          <td>English</td>
+          <td><%=  %> 50</td>
+        </tr>
+        <tr>
+          <th scope="row">1</th>
+          <td>India Gk</td>
+          <td><%=  %> 50</td>
+        </tr>
+        <tr>
+          <th scope="row">1</th>
+          <td>World Gk</td>
+          <td><%=  %> 50</td>
+        </tr>
+        <tr>
+          <th scope="row">1</th>
+          <td>Rajasthan Gk</td>
+          <td><%=  %> 50</td>
+        </tr>
+        <tr>
+          <th scope="row">1</th>
+          <td>Unanswered</td>
+          <td><%=  %> 50</td>
+        </tr>
+   
+        
+      </tbody>
+    </table>
+  </div>
+
+  <div class="question-quantity-container d-flex flex-column justify-content-center">
+    <p class="lead fw-bold text-info mt-5 mb-2">Add question for practice</p>
+
+    <form action="/user/practice" method="post" class="px-3">
+
+
+
+  
+      <div class="form-group mb-3">
+        <label for="date">Add Question Quantity</label>
+        
+        <!-- question for paper -->
+        <% for(let i  of question_Summary_Array) {%> 
+          <div class="input-group mb-2">
+            <span class="input-group-text w-50 " id="basic-addon3"><%= i._id  %> (<%= Number(i.count) %>) </span>
+            <input type="number" class="form-control" min="1" max=<%= Number(i.count) %> id="basic-url" placeholder="" name="<%= i._id %>" value="0"
+              aria-describedby="basic-addon3">
+          </div>
+        <% } %>
+      </div>
+      <div class="form-group mb-3">
+        <label for="date">Add Test Timing</label>
+        <input type="number" name="time" min="1" max="120" value= '0' id=""placeholder='time in minutes' class="form-control">
+      </div>
+      
+      <input type="submit" name="" value="Practice" class="form-control btn btn-outline-primary" id="">
+      
+    </form>
+
+
+
+  </div>
+ 
+</div>
+
+
+<%- include("../partials/footer") %> 

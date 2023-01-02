@@ -1,0 +1,174 @@
+<% include("../partials/submiting_effect") %> 
+<div class="test-container position-relative .position-relative">
+
+  <!-- navbar of test file -->
+  <!-- navbar of test file -->
+  <div class="fixed-top test__navbar">
+    <div class="d-flex justify-content-between align-items-baseline  pt-2 bg-secondary text-white shadow">
+      <div class="dropdown">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Subjects
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
+
+      <div class="time text-warning  ">15:00</div>
+
+      <div class="btn" id="question-number"><i class="fa-sharp fa-solid fa-bars"></i></div>
+    </div>
+
+    <div class="row " style='display: none; z-index: 1001;' id="panel">
+      <div class="col-3" id="flip"></div>
+      <div id="mydiv" class="question-number-container  col-9 border py-3 bg-white " style="height: 99vh;">
+        <p class="lead  border-bottom">Hindi</p>
+        <div class="row row-cols-5 row-cols-md-10 g-1 justify-content-center g-md-2 d-wrap h-75"
+          style="overflow-y: scroll;">
+          <% if(typeof questions !=="undefined" && questions.length> 0) {%>
+            <% for(let i in questions) {%>
+              <div class="border col text-center align-items-center question-number question__number__container"
+                id="id__number__<%= Number(i)+1 %>"
+                style="height: 50px;width: 50px;line-height: 30px; border-radius: 50%; padding:10px 0;">
+                <%= Number(i)+1 %>
+              </div>
+              <% } %>
+                <% } %>
+        </div>
+
+        <div class="apprearance border-top bg-white">
+          <br>
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="check-box border bg-white text-center" style="height : 25px; width: 25px; border-radius: 50%;">
+            </div>
+            <div class="px-2">Unseen</div>
+            <div class="check-box pe-2 border bg-secondary text-center"
+              style="height : 25px; width: 25px; border-radius: 50%;"></div>
+            <div class="px-2">Unanswered</div>
+          </div>
+
+          <% if(typeof questions[0].real_answer==="undefined" ) {%>
+
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="check-box border bg-primary text-center"
+                style="height : 25px; width: 25px; border-radius: 50%;"></div>
+              <div class="px-2">Answered</div>
+              <div class="check-box pe-2 border bg-info text-center"
+                style="height : 25px; width: 25px; border-radius: 50%;"></div>
+              <div class="px-2">Review</div>
+            </div>
+
+            <% }else { %>
+
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="check-box border bg-success text-center"
+                  style="height : 25px; width: 25px; border-radius: 50%;"></div>
+                <div class="px-2">Correct</div>
+                <div class="check-box pe-2 border bg-danger text-center"
+                  style="height : 25px; width: 25px; border-radius: 50%;"></div>
+                <div class="px-2">Wrong</div>
+              </div>
+              <% } %>
+
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- question container box -->
+  <div class="question__box mt-5" id="questions__box" data-user-test-id="<%= test_id ?? 'demo_id' %>">
+
+
+    <% if(typeof questions !=="undefined" && questions.length> 0) {%>
+      <% for(let i=0; i< questions.length ; i++ ) {%>
+        <div class="question-container question__container border mb-3" id="id__<%= Number(i) + 1 %>"
+          data-question-about="<%= questions[i].question_status %>" data-answer="<%= questions[i].user_answer %>"
+          data-question-number="<%= Number(i) + 1 %>" data-question-status="<%= questions[i].question_status %>"
+          data-question-id="<%= questions[i]._id %>" data-revisit-status="<%= questions[i].question_revisit %>"
+          data-real-answer="<%= typeof questions[i].real_answer != 'undefined' ? questions[i].real_answer : 'no' %>">
+
+          <!-- alert for question wrong  or right -->
+          <div class="question__alert alert d-none">
+            <p class="mb-0"></p>
+          </div>
+
+          <div class="question-img mb-1">
+            <p class="lead fw-bold">Q.<%= Number(i)+1 %>
+            </p>
+            <img src='<%= questions[i].photoUrl %>' alt="question.." loading="eager">
+          </div>
+
+
+          <div class="answer-container " id="answer__container__<%= Number(i) + 1  %>">
+            <p class="lead fw-bold mb-0">Ans.</p>
+            <div class="d-flex flex-column mb-5">
+
+              <div class="option d-flex py-2 border-bottom option__container"
+                data-question-number="<%= Number(i) + 1 %>" data-option-active="false" data-ans="a">
+                <div class="col-2 text-center justify-content-center"><span
+                    class="h-100 border rounded-circle p-2 bg-white text-secondary">A</span></div>
+                <div class="col-10">Option A</div>
+              </div>
+              <div class="option d-flex py-2 border-bottom option__container"
+                data-question-number="<%= Number(i) + 1 %>" data-option-active="false" data-ans="b">
+                <div class="col-2 text-center justify-content-center"><span
+                    class="h-100 border rounded-circle p-2 bg-white text-secondary">B</span></div>
+                <div class="col-10">Option B</div>
+              </div>
+              <div class="option d-flex py-2 border-bottom option__container"
+                data-question-number="<%= Number(i) + 1 %>" data-option-active="false" data-ans="c">
+                <div class="col-2 text-center justify-content-center"><span
+                    class="h-100 border rounded-circle p-2 bg-white text-secondary">C</span></div>
+                <div class="col-10">Option C</div>
+              </div>
+              <div class="option d-flex py-2 border-bottom option__container"
+                data-question-number="<%= Number(i) + 1 %>" data-option-active="false" data-ans="d">
+                <div class="col-2 text-center justify-content-center"><span
+                    class="h-100 border rounded-circle p-2 bg-white text-secondary">D</span></div>
+                <div class="col-10">Option D</div>
+              </div>
+
+            </div>
+            <% if(typeof questions[i].real_answer==="undefined" ) {%>
+
+              <div class="fixed-bottom">
+                <div class="d-flex justify-content-between" style="max-width: 400px;">
+                  <a class="btn btn-outline-danger rounded-pill d-inline-block submit" type="button"
+                    href="/user/test/<%= test_id %>/submit">Submit</a>
+                  <div class="btn btn-outline-warning rounded-pill dissmiss__ans"
+                    data-question-number="<%= Number(i) + 1 %>" type="button">Undo</div>
+                  <div class="btn btn-dark rounded-pill save__and__next" data-question-number="<%= Number(i) + 1 %>"
+                    type="button">Save & next➡</div>
+
+                </div>
+
+              </div>
+              <% } else {%>
+                <div class="fixed-bottom">
+                  <div class="d-flex justify-content-between row">
+                    <div class="btn btn-lg btn-outline-dark rounded-0 previous col-6">⬅Previous</div>
+                    <div class="btn btn-lg btn-dark rounded-0 next col-6">Next➡</div>
+                  </div>
+                </div>
+
+                <% } %>
+          </div>
+
+          <!-- input hidden for image name -->
+        </div>
+
+        <% } %>
+          <% } %>
+
+
+
+  </div>
+</div>
+
+<script src="/js/test.js"></script>

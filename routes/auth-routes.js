@@ -1,17 +1,34 @@
 const router = require("express").Router()
+const User = require("../model/user")
+const admin = require("../model/admin")
+const { input__error__handler, user__sign__in__middlware } = require("../src/user_sign_in_middlware")
+const user__login__middleware = require("../src/user-login-middleware")
+const authenticate__user__redirect__to__home = require("../src/authenticate_user_redirect_to_home")
 
-router.get("/", async (req, res)=> {
-  res.send("Welocme to the list.")
+
+
+// user auth routes 
+router.get("/", authenticate__user__redirect__to__home, async (req, res)=> {
+  res.render('pages/sign-page')
+})
+router.get("/login", async (req, res)=> {
+  res.render('pages/login-page')
 })
 
+router.post("/login", user__login__middleware )
 
-router.get("admin/", (req, res) => {
+// router post method for sign in page
+router.post('/sign-in', input__error__handler, user__sign__in__middlware)
+
+
+// admin authroutes   
+router.get("/admin", (req, res) => {
   res.render("admin-pages/admin-login", {
     pageTitle: "Admin Login",
   })
 })
 
-router.post("admin/",  async(req,res) =>{
+router.post("/admin",  async(req,res) =>{
   let errors = []
   if(req.body.adminId === '') {errors.push("Please Enter Admin Id")}
   if(req.body.adminPassword === '') {errors.push("Please enter password")}

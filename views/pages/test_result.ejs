@@ -1,0 +1,62 @@
+<div class="container-fluid d-flex flex-column justify-content-center" >
+
+  <!-- BreadCReam -->
+  <div class="my-3 mb-5 fw-bold">
+    <nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+     <li class="breadcrumb-item"><a href="/user/">Home</a></li>
+     <li class="breadcrumb-item active" aria-current="page">Test Result</li>
+   </ol>
+ </nav>
+ </div>
+
+
+
+
+
+  
+  <div class="result__container" style="max-width: 400px;">
+  <table class="table table-striped" >
+    <thead>
+      <h1 class="table-dark text-center bg-dark">Test Name</h1>
+    </thead>
+    <thead>
+      <tr class="table-warning">
+        <th scope="col">Type</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Total Question</td>
+        <td><%= typeof total_questions !== "undefined" ? total_questions : "--" %> </td>
+      </tr>
+      <tr class="table-secondary">
+        <td>Answered</td>
+        <td><%= typeof answered !== "undefined" ? answered : "--" %></td>
+      </tr>
+      <tr class="table-success" >
+        <td>Correct Answered</td>
+        <td><%= typeof correct_answered !== "undefined" ? correct_answered : "--" %></td>
+      </tr>
+      <tr  class="table-danger">
+        <td>Wrong Answered</td>
+        <td><%= typeof wrong_answered !== "undefined" ? wrong_answered : "--" %></td>
+      </tr>
+      <tr class="table-primary">
+        <td>Percentage </td>
+        <td><%= typeof percentage !== "undefined" ? percentage : "--" %> %</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="text-center mt-5">
+    <a href="/user/test/<%= test_id %>/review" class="btn btn-info btn-lg mb-3">Review The Test</a>
+    <a href="/user/test/<%= test_id %>/reattempt" class="btn btn-outline-info btn-lg">Reattempt Test</a>
+
+
+  </div>
+  
+</div>
+
+<%- include("../partials/footer") %> 
+</div>

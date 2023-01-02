@@ -1,101 +1,156 @@
 <%- include("../partials/admin-navbar") %>
-<h3>All The questions</h3>
+  <h3>All The questions</h3>
 
-<!-- acordian for all questions-->
-<div class="accordion" id="accordionExample">
+  <!-- acordian for all questions-->
+  <div class="accordion" id="accordionExample">
 
-  <!-- unanswered questions -->
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Unanswered Questions
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <% if( questions.length > 0 && typeof questions !=="undefined"){ %> 
-          <% questions.forEach(question => {%> 
-            <div class="question-container border mb-3">
-              <form action="/admin/edit-question/<%= question._id %>" method="post">
-                <div class="questino-img mb-3">
-                  <img src='<%= question.photoUrl %>'  alt="question.." loading="eager">
+    <!-- unanswered questions -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="true" aria-controls="collapseOne">
+          Unanswered Questions
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <% if( questions.length> 0 && typeof questions !=="undefined"){ %>
+            <% questions.forEach(question=> {%>
+
+              <div class="question-container border mb-3">
+
+
+                <div class="alert my-3" style="display: none;">
+
                 </div>
 
-                    <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon3">Sub</span>
-                      <input type="text" class="form-control" id="basic-url" placeholder="" name="subject" value="<%= question.subject %>"
-                        aria-describedby="basic-addon3">
-                    </div>
-                
-       
-                    <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon3">Ans</span>
-                      
-                      
-                      <div class="form-control">
+
+
+                <form action="/admin/edit-question/<%= question._id %>" method="post" class="question_editior_form">
+                  <div class="question-img mb-3">
+                    <img src='<%= question.photoUrl %>' alt="question.." loading="eager">
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3">Sub</span>
+                    <input type="text" id="edit_question_subject" class="form-control" id="basic-url" placeholder=""
+                      name="subject" value="<%= question.subject %>" aria-describedby="basic-addon3">
+                  </div>
+
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3">Ans</span>
+
+
+                    <div class="form-control">
                       <div class="form-check-inline">
                         <label class="form-check-label text-capitalize ms-1" for="">
-                        <input type="radio" class="form-check-input text-capitalize" id="radio2" name="ans" value="a">A
-                      </label>
-                    </div>
-                    <div class="form-check-inline">
-                      <label class="form-check-label text-capitalize ms-1" for="">
-                        <input type="radio" class="form-check-input text-capitalize" id="radio2" name="ans" value="b">b
-                      </label>
-                    </div>
-                    <div class="form-check-inline">
-                      <label class="form-check-label text-capitalize ms-1" for="">
-                        <input type="radio" class="form-check-input text-capitalize" id="radio2" name="ans" value="c">c
-                      </label>
-                    </div>
-                    <div class="form-check-inline h-100">
-                      <label class="form-check-label text-capitalize ms-1" for="">
-                        <input type="radio" class="form-check-input text-capitalize" id="radio2" name="ans" value="d">d
-                      </label>
+                          <input type="radio" class="form-check-input text-capitalize" name="ans" value="a">A
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <label class="form-check-label text-capitalize ms-1" for="">
+                          <input type="radio" class="form-check-input text-capitalize" name="ans" value="b">b
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <label class="form-check-label text-capitalize ms-1" for="">
+                          <input type="radio" class="form-check-input text-capitalize" name="ans" value="c">c
+                        </label>
+                      </div>
+                      <div class="form-check-inline h-100">
+                        <label class="form-check-label text-capitalize ms-1" for="">
+                          <input type="radio" class="form-check-input text-capitalize" name="ans" value="d">d
+                        </label>
+                      </div>
                     </div>
                   </div>
-                </div>
-
-
-
-
-
-                <!-- input hidden for image name -->
-                <input type="hidden" name="imgName" value="<%= question.photoId %>">
-                <div class="input-group mb-3">
-                  <input type="submit" name="submit" class="btn btn-primary w-50" id="basic-url" value="Save">
-                  <input type="submit" name="submit" class="btn btn-danger w-50" value="Delete">
-                </div>
-              </form>
-            </div>
-          <% }) %> 
-        <% }else {%> 
-          <p class="lead">Nothing in this section.</p>
-          <% } %> 
+                  <!-- input hidden for image name -->
+                  <input type="hidden" name="imgName" value="<%= question.photoId %>">
+                  <input type="hidden" name="id" value="<%= question._id %>">
+                  <div class="input-group mb-3 form_submit_button">
+                    <input type="submit" onclick="formType('Save')" name="submit" class="btn btn-primary w-50"
+                      id="basic-url" value="Save">
+                    <input type="submit" name="submit" onclick="formType('Delete')" class="btn btn-danger w-50"
+                      value="Delete">
+                  </div>
+                </form>
+              </div>
+              <% }) %>
+                <% }else {%>
+                  <p class="lead">Nothing in this section.</p>
+                  <% } %>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- subject wise questions -->
-  <% for(let sub of subject){ %> 
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed text-capitalize" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_<%= sub %>" aria-expanded="false" aria-controls="collapseTwo">
-        <%= sub %>  answered Questions
-      </button>
-    </h2>
-    <div id="collapse_<%= sub %>" class="accordion-collapse collapse"  data-bs-parent="#accordionExample">
-      <div class="accordion-body">
+    <!-- subject wise questions -->
+    <% for(let sub of subject){ %>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed text-capitalize" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapse_<%= sub.split(" ")[0] %>" aria-expanded="false" aria-controls="collapseTwo">
+            <%= sub %> answered Questions
+          </button>
+        </h2>
+        <div id="collapse_<%= sub.split(" ")[0] %>" class="accordion-collapse collapse"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+
+            <!-- add answered question  -->
+            <% for(let question of answeredQuestions) {%>
+              <% if( question.subject==sub ){ %>
+
+
+                <div class="question-container border mb-3 ">
+                  <div class="alert my-3" style="display: none;">
+                    
+                  </div>
+                  <div class="remove__question__container">
+                    <input type="hidden" name="" value="<%= question._id %> ">
+                    <div class="question-img mb-3">
+                      <img src='<%= question.photoUrl %>' alt="question..." loading="eager">
+                    </div>
+                    <div class="row row-cols-2 d-flex justify-content-between">
+                      <div class="col">
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon3">Ans</span>
+                          <span class="input-group-text" id="basic-addon3">
+                            <%= question.ans %>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <button type='button' class="btn btn-sm btn-outline-danger">
+                          Remove
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+
+
+
+                </div>
+              <% } %>
+            <% } %>
+
+
+
+
+          </div>
+        </div>
       </div>
-    </div>
+      <%} %>
+
   </div>
-  <%}  %> 
 
-</div>
-
-<!-- unanswered questions -->
+  <!-- unanswered questions -->
 
 
 
 
-<%- include("../partials/footer") %>
+  <%- include("../partials/footer") %>
